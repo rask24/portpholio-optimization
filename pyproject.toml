@@ -1,0 +1,12 @@
+[tool.black]
+line-length = 90
+
+[tool.isort]
+profile = "black"
+line_length = 90
+multi_line_output = true
+
+[tool.flake8]
+max-line-length = 90
+exclude = [".git", "__pycache__", "build"]
+extend-ignore = ["E203", "W503"]
