@@ -31,6 +31,7 @@ class PortfolioOptimization:
         self.learning_rate = learning_rate
         self.tolerance = tolerance
         self.max_iterations = max_iterations
+        self.objective_values = np.array([])
 
     def _objective_function(self, weights):
         """
@@ -122,6 +123,10 @@ class PortfolioOptimization:
         prev_weights = np.copy(weights)
 
         for _ in range(self.max_iterations):
+            # Calculate the objective function value and record it
+            objective_value = self._objective_function(weights)
+            self.objective_values = np.append(self.objective_values, objective_value)
+
             # Calculate the gradient
             gradient = self.cov_matrix @ weights
 

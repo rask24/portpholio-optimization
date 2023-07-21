@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from plot import plot_optimal_portfolio_weights, plot_stock_prices
+from plot import plot_objective_values, plot_optimal_portfolio_weights, plot_stock_prices
 from PortfolioOptimization import PortfolioOptimization
 
 
@@ -45,6 +45,9 @@ def main():
     print("Optimal Portfolio Weights:")
     for weight, name in zip(optimal_weights, const["stock"].values()):
         print(f"{name}: {weight:.4f}")
+
+    # plot transition of objective values
+    plot_objective_values(optimizer.objective_values)
 
     # Plot and save the stock prices in a time series graph
     plot_stock_prices(df, const)
