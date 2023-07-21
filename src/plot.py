@@ -1,7 +1,12 @@
+import os
+
 import matplotlib.pyplot as plt
 
 
 def plot_stock_prices(df, const):
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
+
     fig = plt.figure(figsize=(12, 8))
     for code, name in const["stock"].items():
         plt.plot(df.index, df[code].values, label=name)
@@ -12,6 +17,9 @@ def plot_stock_prices(df, const):
 
 
 def plot_optimal_portfolio_weights(optimal_weights, const):
+    if not os.path.exists("./images"):
+        os.makedirs("./images")
+
     fig = plt.figure(figsize=(8, 8))
     labels = const["stock"].values()
     sizes = optimal_weights
